@@ -36,7 +36,7 @@ def train_cifar10(
         transform=tf,
     )
 
-    dataloader = DataLoader(dataset, batch_size=512, shuffle=True, num_workers=16)
+    dataloader = DataLoader(dataset, batch_size=512, shuffle=True, num_workers=8)
     optim = torch.optim.Adam(ddpm.parameters(), lr=1e-5)
 
     for i in range(n_epoch):
@@ -69,4 +69,4 @@ def train_cifar10(
 
 
 if __name__ == "__main__":
-    train_cifar10()
+    train_cifar10(device="mps")
