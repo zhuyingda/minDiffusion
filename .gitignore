@@ -3,3 +3,5 @@ __pycache__
 *.pth
 ddpm*.png
 .env
+.venv
+dataset_myself
