@@ -16,13 +16,13 @@ import time
 
 
 def train_cifar10(
-    n_epoch: int = 100, device: str = "cuda", load_pth: Optional[str] = None
+    n_epoch: int = 100, device: str = "cuda", load_pth: str = "./ddpm_cifar.pth"
 ) -> None:
 
     ddpm = DDPM(eps_model=NaiveUnet(3, 3, n_feat=128), betas=(1e-4, 0.02), n_T=1000)
 
     if load_pth is not None:
-        ddpm.load_state_dict(torch.load("ddpm_cifar.pth"))
+        ddpm.load_state_dict(torch.load(load_pth, map_location="cpu"))
 
     ddpm.to(device)
 
@@ -71,4 +71,4 @@ def train_cifar10(
 
 
 if __name__ == "__main__":
-    train_cifar10(n_epoch=200, device="mps", load_pth='./ddpm_cifar.pth')
+    train_cifar10(n_epoch=200, device="mps")
