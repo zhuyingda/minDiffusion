@@ -12,10 +12,11 @@ from torchvision.utils import save_image, make_grid
 
 from mindiffusion.unet import NaiveUnet
 from mindiffusion.ddpm import DDPM
+import time
 
 
 def train_cifar10(
-    n_epoch: int = 100, device: str = "cuda:1", load_pth: Optional[str] = None
+    n_epoch: int = 100, device: str = "cuda", load_pth: Optional[str] = None
 ) -> None:
 
     ddpm = DDPM(eps_model=NaiveUnet(3, 3, n_feat=128), betas=(1e-4, 0.02), n_T=1000)
@@ -40,6 +41,7 @@ def train_cifar10(
     optim = torch.optim.Adam(ddpm.parameters(), lr=1e-5)
 
     for i in range(n_epoch):
+        time.sleep(100)
         print(f"Epoch {i} : ")
         ddpm.train()
 
