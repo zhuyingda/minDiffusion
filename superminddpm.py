@@ -18,6 +18,7 @@ from torch.utils.data import DataLoader
 from torchvision.datasets import MNIST
 from torchvision import transforms
 from torchvision.utils import save_image, make_grid
+import time
 
 
 def ddpm_schedules(beta1: float, beta2: float, T: int) -> Dict[str, torch.Tensor]:
@@ -152,6 +153,8 @@ def train_mnist(n_epoch: int = 100, device="cuda:0") -> None:
     optim = torch.optim.Adam(ddpm.parameters(), lr=2e-4)
 
     for i in range(n_epoch):
+        print(f"Epoch {i} : ")
+        # time.sleep(50)
         ddpm.train()
 
         pbar = tqdm(dataloader)
@@ -179,4 +182,4 @@ def train_mnist(n_epoch: int = 100, device="cuda:0") -> None:
 
 
 if __name__ == "__main__":
-    train_mnist(device="mps")
+    train_mnist(device="cuda")

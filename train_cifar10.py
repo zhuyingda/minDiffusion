@@ -41,8 +41,8 @@ def train_cifar10(
     optim = torch.optim.Adam(ddpm.parameters(), lr=1e-5)
 
     for i in range(n_epoch):
-        # time.sleep(50)
         print(f"Epoch {i} : ")
+        # time.sleep(50)
         ddpm.train()
 
         pbar = tqdm(dataloader)
@@ -71,4 +71,4 @@ def train_cifar10(
 
 
 if __name__ == "__main__":
-    train_cifar10(n_epoch=200, device="mps")
+    train_cifar10(n_epoch=200, device="cuda")
