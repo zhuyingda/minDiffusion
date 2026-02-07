@@ -154,7 +154,7 @@ def train_mnist(n_epoch: int = 100, device="cuda:0") -> None:
 
     for i in range(n_epoch):
         print(f"Epoch {i} : ")
-        # time.sleep(50)
+        # time.sleep(100)
         ddpm.train()
 
         pbar = tqdm(dataloader)
@@ -175,11 +175,11 @@ def train_mnist(n_epoch: int = 100, device="cuda:0") -> None:
         with torch.no_grad():
             xh = ddpm.sample(16, (1, 28, 28), device)
             grid = make_grid(xh, nrow=4)
-            save_image(grid, f"./contents/ddpm_sample_{i}.png")
+            save_image(grid, f"./contents/ddpm_sample_mnist{i}.png")
 
             # save model
             torch.save(ddpm.state_dict(), f"./ddpm_mnist.pth")
 
 
 if __name__ == "__main__":
-    train_mnist(device="cuda")
+    train_mnist(n_epoch=200, device="cuda")
