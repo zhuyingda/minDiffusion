@@ -5,3 +5,4 @@ ddpm*.png
 .env
 .venv
 dataset_myself
+*.egg-info
