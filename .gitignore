@@ -5,5 +5,6 @@ ddpm_*.json
 ddpm*.png
 .env
 .venv
-dataset_myself
+dataset_cifar10
+dataset_mnist
 *.egg-info
