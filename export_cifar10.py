@@ -4,7 +4,7 @@ from torchvision import transforms
 from PIL import Image
 from tqdm import tqdm
 
-def export_cifar10(root_dir="./dataset_myself"):
+def export_cifar10(root_dir="./dataset_cifar10"):
     # CIFAR-10 的类别名称（官方顺序）
     class_names = [
         "airplane", "automobile", "bird", "cat", "deer",
